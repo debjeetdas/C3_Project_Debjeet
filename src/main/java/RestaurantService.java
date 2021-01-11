@@ -5,10 +5,10 @@ import java.util.List;
 public class RestaurantService {
     private static List<Restaurant> restaurants = new ArrayList<>();
 
-    public Restaurant findRestaurantByName(String restaurantName) throws restaurantNotFoundException {
+    public Restaurant findRestaurantByName(String restaurantName) throws RestaurantNotFoundException {
         Restaurant restaurant = restaurants.stream().filter(r -> r.getName().equals(restaurantName)).findAny().orElse(null);
         if (restaurant == null)
-            throw new restaurantNotFoundException("Unable to find "+restaurantName);
+            throw new RestaurantNotFoundException("Unable to find "+restaurantName);
         return restaurant;
     }
 
@@ -18,7 +18,7 @@ public class RestaurantService {
         return newRestaurant;
     }
 
-    public Restaurant removeRestaurant(String restaurantName) throws restaurantNotFoundException {
+    public Restaurant removeRestaurant(String restaurantName) throws RestaurantNotFoundException {
         Restaurant restaurantToBeRemoved = findRestaurantByName(restaurantName);
         restaurants.remove(restaurantToBeRemoved);
         return restaurantToBeRemoved;

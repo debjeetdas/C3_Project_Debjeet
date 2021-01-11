@@ -66,6 +66,12 @@ public class Restaurant {
     }
 
     public Double calculateOrderValue(List<Item> items) {
-        return 0.0;
+        double totalOrderValue = 0;
+        for(int i = 0; i < items.size(); i++)
+        {
+            totalOrderValue = totalOrderValue + items.get(i).getPrice();
+        }
+        System.out.println("totalOrderValue ----> "+totalOrderValue);
+        return totalOrderValue;
     }
 }
